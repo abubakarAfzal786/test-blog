@@ -1,0 +1,42 @@
+version: "3.1"
+services:
+  php7:
+    build:
+      context: docker/apache_php
+    container_name: sales_vi_php
+    links:
+      - db
+      - phpmyadmin
+    ports:
+      - "8090:80"
+    volumes:
+      - ./:/var/www/html
+      - ~/.composer/auth.json:/root/.composer/auth.json
+
+  db:
+    build:
+      context: docker/db
+    container_name: sales_vi_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=sales_vi_2019
+      - MYSQL_DATABASE=sales_vi_db
+      - MYSQL_USER=sales_vi_user
+      - MYSQL_PASSWORD=sales_vi_2019
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      MYSQL_USERNAME: sales_vi_user
+      MYSQL_ROOT_PASSWORD: sales_vi_2019
+      UPLOAD_LIMIT: 128M
+      PMA_HOST: db
+
+volumes:
+  mydata:

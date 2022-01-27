@@ -1,0 +1,45 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch && npm run websocket && npm run artisan",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "artisan": "php artisan serve",
+        "websocket": "php artisan websockets:serve"
+    },
+    "dependencies": {
+        "animate.css": "^3.7.2",
+        "aos": "^3.0.0-beta.6",
+        "laravel-echo": "^1.6.1",
+        "pusher-js": "^5.0.3",
+        "v-markdown-editor": "^1.1.6",
+        "vue-croppa": "^1.3.8",
+        "vue-croppie": "^2.0.1",
+        "vue-painting": "^1.0.8",
+        "vue-progressbar": "^0.7.5",
+        "vue-router": "^3.1.3",
+        "vue-simplemde": "^0.5.2",
+        "vue-top-progress": "^0.7.0",
+        "vuetify": "^1.5.19"
+    },
+    "devDependencies": {
+        "axios": "^0.19",
+        "bootstrap": "^4.1.0",
+        "cross-env": "^5.1",
+        "jquery": "^3.2",
+        "laravel-mix": "^4.0.7",
+        "lodash": "^4.17.13",
+        "popper.js": "^1.16.0",
+        "resolve-url-loader": "^2.3.1",
+        "sass": "^1.23.0",
+        "sass-loader": "^7.1.0",
+        "vue": "^2.6.10",
+        "vue-cli-plugin-vuetify": "^0.6.3",
+        "vue-template-compiler": "^2.6.10",
+        "vuetify-loader": "^1.2.2"
+    }
+}
